@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -32,12 +32,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password', 'api_token'
     ];
-
-    private function searchUser()
-    {
-        var_dump($this);
-        exit;
-    }
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.

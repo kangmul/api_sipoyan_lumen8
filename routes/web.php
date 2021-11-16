@@ -14,10 +14,19 @@
 */
 
 $router->get('/', function () use ($router) {
-    return "Api Aplikasi SIPOYAN with" . $router->app->version() . "\n DISCLAIMER";
+    return "Api Aplikasi SIPOYAN with " . $router->app->version() . "\n DISCLAIMER";
+});
+
+$router->get('keygenerate', function () {
+    return illuminate\support\Str::random(32);
 });
 
 $router->get('/response', ['uses' => 'ResponseController@response2']);
 
-$router->post('/register', ['uses' => 'AuthController@register']);
-$router->post('/login', ['uses' => 'AuthController@login']);
+// $router->post('/register', ['uses' => 'AuthController@register']);
+// $router->post('/login', ['uses' => 'AuthController@login']);
+
+$router->group(['prefix' => 'auth'], function () use ($router) {
+    $router->post('register', 'AuthController@register');
+    $router->post('login', 'AuthController@login');
+});
