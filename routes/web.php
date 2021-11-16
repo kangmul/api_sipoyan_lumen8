@@ -14,5 +14,10 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return "Api Aplikasi SIPOYAN with" . $router->app->version() . "\n DISCLAIMER";
 });
+
+$router->get('/response', ['uses' => 'ResponseController@response2']);
+
+$router->post('/register', ['uses' => 'AuthController@register']);
+$router->post('/login', ['uses' => 'AuthController@login']);
