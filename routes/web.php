@@ -30,3 +30,21 @@ $router->group(['prefix' => 'auth'], function () use ($router) {
     $router->post('register', 'AuthController@register');
     $router->post('login', 'AuthController@login');
 });
+
+$router->group(['prefix' => 'ina', 'middleware' => 'jwt'], function () use ($router) {
+    $router->get('provinsi', 'InaController@allprovinsi');
+    $router->get('provinsi/{id}', 'InaController@provinsi');
+    $router->get('kotakab', 'InaController@allkotakab');
+    $router->get('kotakab/{id}', 'InaController@kotakabbyid');
+    $router->get('kotakabbyprovid/{id}', 'InaController@kotakabbyidProvinsi');
+    $router->get('kecamatan', 'InaController@kecamatan');
+    $router->get('kecbyid/{id}', 'InaController@kecbyid');
+    $router->get('kecbykotakabid/{id}', 'InaController@kecbykotakabid');
+    $router->get('kelurahan', 'InaController@kelurahan');
+    $router->get('kelurahanbyid/{id}', 'InaController@kelurahanbyid');
+    $router->get('kelurahanbykecid/{id}', 'InaController@kelurahanbykecid');
+});
+
+$router->group(['prefix' => 'dtwarga', 'middleware' => 'jwt'], function () use ($router) {
+    $router->get('allwarga', 'WargController@allwarga');
+});

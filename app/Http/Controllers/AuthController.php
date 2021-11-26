@@ -152,7 +152,7 @@ class AuthController extends Controller
     private function generateToken($request, $data)
     {
         $now = new DateTime();
-        $future = new DateTime("+240 minutes");
+        $future = new DateTime("+720 minutes");
         $server = $request->getHttpHost();
         $jti = Crypt::encrypt(rand());
         $customClaims = [
@@ -163,7 +163,8 @@ class AuthController extends Controller
                 "nickname" => $data->nickname,
                 "email" => $data->email,
             ],
-            "sub" => $server
+            "sub" => $server,
+            "iss" => "bearer"
         ];
 
         $payload = JWTFactory::customClaims($customClaims)->make($customClaims);
