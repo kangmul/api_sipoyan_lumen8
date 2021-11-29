@@ -46,5 +46,9 @@ $router->group(['prefix' => 'ina', 'middleware' => 'jwt'], function () use ($rou
 });
 
 $router->group(['prefix' => 'dtwarga', 'middleware' => 'jwt'], function () use ($router) {
-    $router->get('allwarga', 'WargController@allwarga');
+    $router->get('allwarga[/{limit}/{offset}]', 'WargaController@allwarga');
+    $router->get('bayi[/{limit}/{offset}]', 'WargaController@bayi');
+    $router->get('batita[/{limit}/{offset}]', 'WargaController@batita');
+    $router->get('balita[/{limit}/{offset}]', 'WargaController@balita');
+    $router->get('lansia[/{limit}/{offset}]', 'WargaController@lansia');
 });
